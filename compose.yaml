@@ -1,0 +1,7 @@
+services:
+  calculator:
+    build: .
+    image: calculator-api:1.0
+    container_name: calculator-container
+    ports:
+      - "8080:8080"
