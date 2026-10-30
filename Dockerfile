@@ -2,7 +2,7 @@
 # Stage 1: Build the application using Maven and Java 21
 FROM maven:3.9-eclipse-temurin-21 AS builder
 
-WORKDIR /app
+RKDIR /app
 
 # Copy Maven configuration first to improve dependency caching
 COPY pom.xml .
