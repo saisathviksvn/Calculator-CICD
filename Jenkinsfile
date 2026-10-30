@@ -35,7 +35,7 @@ pipeline {
         }
 
         // Stage 4: Build and tag the Docker image
-        ste('Docker Build') {
+        stage('Docker Build') {
             steps {
                 sh '''
                     docker build \
