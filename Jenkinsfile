@@ -100,7 +100,7 @@ pipeline {
             echo 'Pipeline completed successfully!'
 
             emailext(
-                to: 'YOUR_EMAIL@gmail.com', // Change to your recipient email
+                to: 'saisathviksvn@gmail.com', // Change to your recipient email
                 subject: "SUCCESS: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
                 body: """
                     <h2>Pipeline Succeeded!</h2>
@@ -117,7 +117,7 @@ pipeline {
             echo 'Pipeline failed!'
 
             emailext(
-                to: 'YOUR_EMAIL@gmail.com', // Change to your recipient email
+                to: 'saisathviksvn@gmail.com', // Change to your recipient email
                 subject: "FAILURE: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
                 body: """
                     <h2>Pipeline Failed!</h2>
