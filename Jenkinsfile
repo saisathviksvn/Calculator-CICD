@@ -94,15 +94,41 @@ pipeline {
         }
     }
 
+
     post {
         success {
-            echo 'CI/CD pipeline completed successfully.'
+            echo 'Pipeline completed successfully!'
+
+            emailext(
+                to: 'YOUR_EMAIL@gmail.com', // Change to your recipient email
+                subject: "SUCCESS: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: """
+                    <h2>Pipeline Succeeded!</h2>
+                    <p><b>Job:</b> ${env.JOB_NAME}</p>
+                    <p><b>Build Number:</b> ${env.BUILD_NUMBER}</p>
+                    <p><b>Status:</b> SUCCESS</p>
+                    <p><a href="${env.BUILD_URL}">View Build Details</a></p>
+                """,
+                mimeType: 'text/html'
+            )
         }
+
         failure {
-            echo 'CI/CD pipeline failed. Check the stage logs.'
-        }
-        always {
-            echo "Build ${BUILD_NUMBER} finished with status: ${currentBuild.currentResult}"
+            echo 'Pipeline failed!'
+
+            emailext(
+                to: 'YOUR_EMAIL@gmail.com', // Change to your recipient email
+                subject: "FAILURE: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: """
+                    <h2>Pipeline Failed!</h2>
+                    <p><b>Job:</b> ${env.JOB_NAME}</p>
+                    <p><b>Build Number:</b> ${env.BUILD_NUMBER}</p>
+                    <p><b>Status:</b> FAILURE</p>
+                    <p>Please check the console output to identify the error.</p>
+                    <p><a href="${env.BUILD_URL}">View Build Details</a></p>
+                """,
+                mimeType: 'text/html'
+            )
         }
     }
 }
