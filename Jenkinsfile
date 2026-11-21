@@ -114,7 +114,7 @@ pipeline {
         }
 
         failure {
-            echo 'Pipeline failed!'
+            echo 'Pipeline failed! 2'
 
             emailext(
                 to: 'saisathviksvn@gmail.com', // Change to your recipient email
